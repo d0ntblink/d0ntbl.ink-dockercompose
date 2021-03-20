@@ -63,3 +63,7 @@ services:
       - "traefik.http.routers.nginx-secured.rule=Host(`tools.d0ntbl.ink`)" # <== Your Domain Name for the https rule 
       - "traefik.http.routers.nginx-secured.entrypoints=web-secured" # <== Defining entrypoint for https, **ref: line 31
       - "traefik.http.routers.nginx-secured.tls.certresolver=mytlschallenge" # <== Defining certsresolvers for https
+
+networks:
+  web:
+    external: true
