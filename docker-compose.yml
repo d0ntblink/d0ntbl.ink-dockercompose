@@ -37,7 +37,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock # <== Volume for docker admin
       - ./dynamic.yaml:/dynamic.yaml # <== Volume for dynamic conf file, **ref: line 27
     networks:
-      - bridge # <== Placing traefik on the network named web, to access containers on this network
+      - web # <== Placing traefik on the network named web, to access containers on this network
     labels:
     #### Labels define the behavior and rules of the traefik proxy for this container ####
       - "traefik.enable=true" # <== Enable traefik on itself to view dashboard and assign subdomain to view it
@@ -53,7 +53,7 @@ services:
     restart: always
     container_name: tools
     networks:
-      - bridge
+      - web
     labels:
       #### Labels define the behavior and rules of the traefik proxy for this container ####
       - "traefik.enable=true" # <== Enable traefik to proxy this container
