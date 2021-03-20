@@ -5,7 +5,7 @@ services:
   ####        Traefik Proxy Setup           #####
   ###############################################
   traefik:
-    image: traefik:v2.0
+    image: traefik:v2.4
     restart: always
     container_name: traefik
     ports:
