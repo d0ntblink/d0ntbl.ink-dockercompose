@@ -49,7 +49,7 @@ services:
   ##############################################
   tools: # <== we aren't going to open :80 here because traefik is going to serve this on entrypoint 'web'
   ## :80 is already exposed from within the container ##
-    image: d0ntblink/tools.d0ntbl.ink:debian
+    image: d0ntblink/tools.d0ntbl.ink:latest
     stdin_open: true # docker run -i
     tty: true        # docker run -t
     restart: always
