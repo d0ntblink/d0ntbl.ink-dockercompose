@@ -57,12 +57,12 @@ services:
     labels:
       #### Labels define the behavior and rules of the traefik proxy for this container ####
       - "traefik.enable=true" # <== Enable traefik to proxy this container
-      - "traefik.http.routers.tools.rule=Host(`d0ntbl.ink`)" # <== Your Domain Name goes here for the http rule
-      - "traefik.http.routers.tools.entrypoints=web" # <== Defining the entrypoint for http, **ref: line 30
-      # - "traefik.http.routers.tools.middlewares=redirect@file" # <== This is a middleware to redirect to https
-      # - "traefik.http.routers.tools-secured.rule=Host(`d0ntbl.ink`)" # <== Your Domain Name for the https rule 
-      # - "traefik.http.routers.tools-secured.entrypoints=web-secured" # <== Defining entrypoint for https, **ref: line 31
-      # - "traefik.http.routers.tools-secured.tls.certresolver=mytlschallenge" # <== Defining certsresolvers for https
+      - "traefik.http.routers.home.rule=Host(`d0ntbl.ink`)" # <== Your Domain Name goes here for the http rule
+      - "traefik.http.routers.home.entrypoints=web" # <== Defining the entrypoint for http, **ref: line 30
+      # - "traefik.http.routers.home.middlewares=redirect@file" # <== This is a middleware to redirect to https
+      # - "traefik.http.routers.home-secured.rule=Host(`d0ntbl.ink`)" # <== Your Domain Name for the https rule 
+      # - "traefik.http.routers.home-secured.entrypoints=web-secured" # <== Defining entrypoint for https, **ref: line 31
+      # - "traefik.http.routers.home-secured.tls.certresolver=mytlschallenge" # <== Defining certsresolvers for https
 
   ########################################
   ####  Python Tools Setup Container #####
