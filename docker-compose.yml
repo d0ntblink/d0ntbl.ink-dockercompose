@@ -43,6 +43,8 @@ services:
       - "traefik.enable=true" # <== Enable traefik on itself to view dashboard and assign subdomain to view it
       - "traefik.http.routers.api.rule=Host(`monitor.d0ntbl.ink`)" # <== Setting the domain for the dashboard
       - "traefik.http.routers.api.service=api@internal" # <== Enabling the api to be a service to access
+      - "traefik.http.routers.api.middlewares=auth"
+      - "traefik.http.middlewares.auth.basicauth.users=d0ntblink:$$apr1$$XlFqqmrf$$MhkJS1brXe0lk50Tj4MnT."
 
   ########################################
   ####   Home Page Setup Container   #####
