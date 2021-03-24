@@ -86,6 +86,23 @@ services:
       # - "traefik.http.routers.tools-secured.entrypoints=web-secured" # <== Defining entrypoint for https, **ref: line 31
       # - "traefik.http.routers.tools-secured.tls.certresolver=mytlschallenge" # <== Defining certsresolvers for https
 
+  ########################################
+  ####             test              #####
+  ########################################
+  test: # <== we aren't going to open :80 here because traefik is going to serve this on entrypoint 'web'
+  ## :80 is already exposed from within the container ##
+    image: nginx:latest
+    restart: always
+    container_name: test
+    networks:
+      - web
+    labels: 
+      #### Labels define the behavior and rules of the traefik proxy for this container ####
+      - "traefik.enable=true" # <== Enable traefik to proxy this container
+      - "traefik.http.routers.test.rule=Host(`test.d0ntbl.ink`)" # <== Your Domain Name goes here for the http rule
+      - "traefik.http.routers.test.entrypoints=web" # <== Defining the entrypoint for http, **ref: line 30
+      - "traefik.http.middlewares.test-auth.basicauth.users=admin:$$apr1$$Bwr3Cv/P$$vRM5iI4NSsDhyfQ6Sa.2l/"
+
 networks:
   web:
     external: true
