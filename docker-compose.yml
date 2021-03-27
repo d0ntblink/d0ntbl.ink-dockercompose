@@ -105,11 +105,11 @@ services:
 
     labels: 
       #### Labels define the behavior and rules of the traefik proxy for this container ####
-      - "traefik.enable=true" # <== Enable traefik to proxy this container
-      - "traefik.http.routers.test.rule=Host(`test.d0ntbl.ink`)" # <== Your Domain Name goes here for the http rule
-      - "traefik.http.routers.test.entrypoints=web" # <== Defining the entrypoint for http, **ref: line 30
-      - "traefik.http.routers.test.middlewares=auth"
-      - "traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$Bwr3Cv/P$$vRM5iI4NSsDhyfQ6Sa.2l/"
+      # - "traefik.enable=true" # <== Enable traefik to proxy this container
+      # - "traefik.http.routers.test.rule=Host(`test.d0ntbl.ink`)" # <== Your Domain Name goes here for the http rule
+      # - "traefik.http.routers.test.entrypoints=web" # <== Defining the entrypoint for http, **ref: line 30
+      # - "traefik.http.routers.test.middlewares=auth"
+      # - "traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$Bwr3Cv/P$$vRM5iI4NSsDhyfQ6Sa.2l/"
 
 
 networks:
