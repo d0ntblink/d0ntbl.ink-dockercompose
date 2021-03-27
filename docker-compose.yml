@@ -57,7 +57,7 @@ services:
     networks:
       - web
     volumes: 
-      - ./homepage:/usr/share/nginx/html/homepage
+      - ./homepage:/usr/share/nginx/html
     labels:
       #### Labels define the behavior and rules of the traefik proxy for this container ####
       - "traefik.enable=true" # <== Enable traefik to proxy this container
