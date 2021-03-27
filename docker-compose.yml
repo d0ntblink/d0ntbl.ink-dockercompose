@@ -119,9 +119,9 @@ services:
     ports: 
       - "80:5000"
     networks: 
-      - local
+      - web
     volumes: 
-      - ./pythontools:/pythontools
+      - ./pythontools:/root/pythontools
 
 networks:
   web:
