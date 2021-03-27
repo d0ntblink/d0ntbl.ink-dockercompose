@@ -51,7 +51,7 @@ services:
   ########################################
   home: # <== we aren't going to open :80 here because traefik is going to serve this on entrypoint 'web'
   ## :80 is already exposed from within the container ##
-    image: d0ntblink/d0ntbl.ink:ladash
+    image: d0ntblink/d0ntbl.ink:latest
     restart: always
     container_name: home
     networks:
