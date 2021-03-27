@@ -110,9 +110,24 @@ services:
       - "traefik.http.routers.dash.rule=Host(`dash.d0ntbl.ink`)" # <== Your Domain Name goes here for the http rule
       - "traefik.http.routers.dash.entrypoints=web" # <== Defining the entrypoint for http, **ref: line 30
 
+  test:
+    image: d0ntblink/tools.d0ntbl.ink:debian
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    restart: always
+    container_name: test
+    ports: 
+      - "80:5000"
+    networks: 
+      - local
+    volumes: 
+      - ./pythontools:/pythontools
+
 networks:
   web:
     external: true
+  local:
+    internal: true
 
 volumes:
   portainer_data:
