@@ -109,8 +109,6 @@ services:
       - "traefik.http.services.dash.loadbalancer.server.port=9000" #this machine exposes two ports so this is the GUI port
       - "traefik.http.routers.dash.rule=Host(`dash.d0ntbl.ink`)" # <== Your Domain Name goes here for the http rule
       - "traefik.http.routers.dash.entrypoints=web" # <== Defining the entrypoint for http, **ref: line 30
-      - "traefik.http.routers.dash.middlewares=dash-auth"
-      - "traefik.http.middlewares.dash-auth.basicauth.users=d0ntblink:$$apr1$$XlFqqmrf$$MhkJS1brXe0lk50Tj4MnT."
 
 networks:
   web:
