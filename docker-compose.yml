@@ -91,11 +91,18 @@ services:
   ########################################
   test: # <== we aren't going to open :80 here because traefik is going to serve this on entrypoint 'web'
   ## :80 is already exposed from within the container ##
-    image: nginx:latest
+    image: portainer/portainer-ce
     restart: always
     container_name: test
+    ports: 
+      - "8000:8000"
+      - "9000:9000"
     networks:
       - web
+    volumes: 
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data 
+
     labels: 
       #### Labels define the behavior and rules of the traefik proxy for this container ####
       - "traefik.enable=true" # <== Enable traefik to proxy this container
@@ -103,6 +110,7 @@ services:
       - "traefik.http.routers.test.entrypoints=web" # <== Defining the entrypoint for http, **ref: line 30
       - "traefik.http.routers.test.middlewares=auth"
       - "traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$Bwr3Cv/P$$vRM5iI4NSsDhyfQ6Sa.2l/"
+
 
 networks:
   web:
