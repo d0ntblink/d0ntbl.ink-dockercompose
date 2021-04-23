@@ -41,7 +41,7 @@ services:
     labels:
     #### Labels define the behavior and rules of the traefik proxy for this container ####
       - "traefik.enable=true" # <== Enable traefik on itself to view dashboard and assign subdomain to view it
-      - "traefik.http.routers.api.rule=Host(`monitor.d0ntbl.ink`)" # <== Setting the domain for the dashboard
+      - "traefik.http.routers.api.rule=Host(`monitor.d0ntbl.ink`) || Host(`www.monitor.d0ntbl.ink`)" # <== Setting the domain for the dashboard
       - "traefik.http.routers.api.service=api@internal" # <== Enabling the api to be a service to access
       - "traefik.http.routers.api.middlewares=mon-auth"
       - "traefik.http.middlewares.mon-auth.basicauth.users=d0ntblink:$$apr1$$XlFqqmrf$$MhkJS1brXe0lk50Tj4MnT."
@@ -61,7 +61,7 @@ services:
     labels:
       #### Labels define the behavior and rules of the traefik proxy for this container ####
       - "traefik.enable=true" # <== Enable traefik to proxy this container
-      - "traefik.http.routers.home.rule=Host(`d0ntbl.ink`)" # <== Your Domain Name goes here for the http rule
+      - "traefik.http.routers.home.rule=Host(`d0ntbl.ink`) || Host(`www.d0ntbl.ink`)" # <== Your Domain Name goes here for the http rule
       - "traefik.http.routers.home.entrypoints=web" # <== Defining the entrypoint for http, **ref: line 30
       # - "traefik.http.routers.home.middlewares=redirect@file" # <== This is a middleware to redirect to https
       # - "traefik.http.routers.home-secured.rule=Host(`d0ntbl.ink`)" # <== Your Domain Name for the https rule 
@@ -85,7 +85,7 @@ services:
     labels:
       #### Labels define the behavior and rules of the traefik proxy for this container ####
       - "traefik.enable=true" # <== Enable traefik to proxy this container
-      - "traefik.http.routers.tools.rule=Host(`tools.d0ntbl.ink`)" # <== Your Domain Name goes here for the http rule
+      - "traefik.http.routers.tools.rule=Host(`tools.d0ntbl.ink`) || Host(`www.tools.d0ntbl.ink`)" # <== Your Domain Name goes here for the http rule
       - "traefik.http.routers.tools.entrypoints=web" # <== Defining the entrypoint for http, **ref: line 30
       # - "traefik.http.routers.tools.middlewares=redirect@file" # <== This is a middleware to redirect to https
       # - "traefik.http.routers.tools-secured.rule=Host(`tools.d0ntbl.ink`)" # <== Your Domain Name for the https rule 
@@ -111,7 +111,7 @@ services:
       ### Labels define the behavior and rules of the traefik proxy for this container ####
       - "traefik.enable=true" # <== Enable traefik to proxy this container
       - "traefik.http.services.dash.loadbalancer.server.port=9000" #this machine exposes two ports so this is the GUI port
-      - "traefik.http.routers.dash.rule=Host(`dash.d0ntbl.ink`)" # <== Your Domain Name goes here for the http rule
+      - "traefik.http.routers.dash.rule=Host(`dash.d0ntbl.ink`) || Host(`www.dash.d0ntbl.ink`)" # <== Your Domain Name goes here for the http rule
       - "traefik.http.routers.dash.entrypoints=web" # <== Defining the entrypoint for http, **ref: line 30
 
 networks:
