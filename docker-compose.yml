@@ -97,7 +97,7 @@ services:
   ########################################
   dash: # <== we aren't going to open :80 here because traefik is going to serve this on entrypoint 'web'
   ## :80 is already exposed from within the container ##
-    image: portainer/portainer-ce:2.1.1-alpine
+    image: portainer/portainer-ce:2.6.3-alpine
     restart: always
     container_name: dash
     ports: 
